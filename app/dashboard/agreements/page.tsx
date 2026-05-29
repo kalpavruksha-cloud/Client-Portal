@@ -1,4 +1,4 @@
-import Sidebar from "@/components/layout/Sidebar";
+import Sidebar from "@/components/layout/PremiumSidebar";
 import Navbar from "@/components/layout/Navbar";
 
 export default function AgreementsPage() {

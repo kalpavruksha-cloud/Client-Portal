@@ -1,60 +1,117 @@
-import Sidebar from "@/components/layout/Sidebar";
-import Navbar from "@/components/layout/Navbar";
-import StatsCards from "@/components/dashboard/StatsCards";
-import PremiumChart from "@/components/charts/PremiumChart";
+import PremiumSidebar from "@/components/layout/PremiumSidebar";
+import TopCards from "@/components/dashboard/TopCards";
 
 export default function DashboardPage() {
   return (
-    <div className="flex">
-      <Sidebar />
+    <div className="flex bg-[#f5f5fb] min-h-screen">
+      <PremiumSidebar />
 
-      <div className="ml-[300px] p-8 w-full">
-        <Navbar />
+      <main className="flex-1 p-10">
+        {/* HEADER */}
+        <div className="flex items-center justify-between mb-10">
+          <div>
+            <p className="text-gray-500">
+              Welcome back,
+            </p>
 
-        <StatsCards />
+            <h1 className="text-5xl font-black">
+              Satish H 👋
+            </h1>
+          </div>
 
-        <PremiumChart />
+          <div className="flex items-center gap-4">
+            <button className="bg-white rounded-2xl px-6 py-3 shadow">
+              May 2025
+            </button>
+          </div>
+        </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
-          <div className="glass rounded-3xl p-8">
-            <h2 className="text-2xl font-bold mb-6">
-              Latest Transactions
-            </h2>
+        {/* TOP CARDS */}
+        <TopCards />
 
-            <div className="space-y-5">
-              <div className="flex justify-between">
-                <span>Payout Credited</span>
-                <span className="text-green-400">
-                  + ₹45,000
-                </span>
+        {/* CHART + ACTIVITY */}
+        <div className="grid grid-cols-3 gap-6 mt-8">
+          {/* CHART */}
+          <div className="col-span-2 bg-gradient-to-br from-[#17072b] to-[#3b0764] rounded-[35px] p-8 text-white">
+            <div className="flex justify-between items-center">
+              <div>
+                <h2 className="text-3xl font-bold">
+                  Portfolio Overview
+                </h2>
+
+                <p className="text-violet-200 mt-2">
+                  Wealth growth analytics
+                </p>
               </div>
 
-              <div className="flex justify-between">
-                <span>Investment Added</span>
-                <span className="text-cyan-400">
-                  + ₹5,00,000
-                </span>
-              </div>
+              <button className="bg-white/10 px-5 py-3 rounded-2xl">
+                Last 6 Months
+              </button>
+            </div>
+
+            {/* GRAPH */}
+            <div className="h-[350px] mt-10 flex items-end gap-5">
+              <div className="bg-violet-400 w-full h-[40%] rounded-t-3xl" />
+              <div className="bg-fuchsia-400 w-full h-[55%] rounded-t-3xl" />
+              <div className="bg-violet-400 w-full h-[70%] rounded-t-3xl" />
+              <div className="bg-fuchsia-400 w-full h-[80%] rounded-t-3xl" />
+              <div className="bg-violet-400 w-full h-[100%] rounded-t-3xl" />
             </div>
           </div>
 
-          <div className="glass rounded-3xl p-8">
-            <h2 className="text-2xl font-bold mb-6">
-              Notifications
+          {/* ACTIVITY */}
+          <div className="bg-white rounded-[35px] p-8">
+            <h2 className="text-3xl font-bold">
+              Recent Activity
             </h2>
 
-            <div className="space-y-4">
-              <div className="p-4 rounded-2xl bg-violet-600/10">
-                Your monthly payout is credited.
-              </div>
+            <div className="space-y-6 mt-8">
+              <Activity
+                title="Monthly payout credited"
+                amount="₹50,000"
+              />
 
-              <div className="p-4 rounded-2xl bg-cyan-500/10">
-                Agreement uploaded successfully.
-              </div>
+              <Activity
+                title="Agreement uploaded"
+                amount="PDF"
+              />
+
+              <Activity
+                title="Referral commission"
+                amount="₹5,000"
+              />
+
+              <Activity
+                title="Investment added"
+                amount="₹5,00,000"
+              />
             </div>
           </div>
         </div>
+      </main>
+    </div>
+  );
+}
+
+function Activity({
+  title,
+  amount,
+}: any) {
+  return (
+    <div className="flex items-center justify-between border-b border-gray-100 pb-5">
+      <div>
+        <h3 className="font-semibold">
+          {title}
+        </h3>
+
+        <p className="text-gray-400 mt-1">
+          02 May 2025
+        </p>
       </div>
+
+      <span className="font-bold text-violet-700">
+        {amount}
+      </span>
     </div>
   );
 }
